@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 import React from "react";
 
 // const url = "https://randomuser.me/api/?results=200&nat=us";
@@ -8,7 +8,7 @@ import React from "react";
 function App() {
   return (
     <>
-
+      Hello World
     </>
     );
 }
