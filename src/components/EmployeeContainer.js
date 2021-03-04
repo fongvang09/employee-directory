@@ -53,8 +53,8 @@ class EmployeeContainer extends Component {
                 </div>
                 <div>
                     {this.state.results.map(emp => (
-                        <p>{emp.name.first} {emp.picture.thumbnail}</p>,
-                        <img src="{emp.picture.thumbnail}" />
+                        // <p> {emp.picture.thumbnail}</p>,
+                        <p><img src={emp.picture.thumbnail} alt="thumnail"/> {emp.name.last} {emp.name.first}</p>
 
 
                     ))}
