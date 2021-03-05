@@ -2,9 +2,10 @@ import React from "react"
 
 const style = {
   header: {
-    background: "blue",
-    alignText: "center",
-    padding: "30px"
+    background: "rgb(51, 51, 182)",
+    textAlign: "center",
+    padding: "30px",
+    color: "white"
   },
   // h1: {
   //   fontSize: "30px",

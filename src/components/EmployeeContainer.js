@@ -1,18 +1,18 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Header from "./Header";
 import SearchForm from "./SearchForm";
 import API from "../utils/API";
+import "./test.css";
+// import Col from "./Col";
+import * as ReactBootStrap from "react-bootstrap";
+// import SearchResults from "./SearchResults";
 // import Background from "./Background";
 
-// function EmployeeContainer() {
-//     return (
-//         <>
-//             <Header />
-//             <SearchForm />
-
-//         </>
-//     )
-// };
+const style = {
+    ReactBootStrap: {
+        textAlign: "center"
+    }
+}
 
 class EmployeeContainer extends Component {
     state = {
@@ -28,7 +28,6 @@ class EmployeeContainer extends Component {
                 console.log(res.data)
                 this.setState({ results: res.data.results })
             })
-
             .catch(err => console.log(err));
     };
     handleInputChange = event => {
@@ -46,22 +45,40 @@ class EmployeeContainer extends Component {
         return (
             <>
                 <div>
+                    <Header />
                     <SearchForm value={this.state.search} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} />
-            <Header />
-            <SearchForm />
-
+                    {/* <Col /> */}
                 </div>
-                <div>
-                    {this.state.results.map(emp => (
-                        // <p> {emp.picture.thumbnail}</p>,
-                        <p><img src={emp.picture.thumbnail} alt="thumnail"/> {emp.name.last} {emp.name.first}</p>
+                <ReactBootStrap.Table striped bordered hover style={style.ReactBootStrap}>
+                    <tr align="center">
+                        <td>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>DOB</th>
+                                </tr>
+                            </thead>
+                                {/* <tbody>
+                                    {this.state.results.map()}
+                                </tbody> */}
+                            {this.state.results.map(emp => (
+                                <tr>
+                                    <th><img src={emp.picture.thumbnail} alt="thumbnail" /></th>
+                                    <th>{emp.name.first} {emp.name.last}</th>
+                                    <th>{emp.phone}</th>
+                                    <th><a href="{emp.email}" target="_blank">{emp.email}</a></th>
+                                    <th>{emp.dob.date}</th>
+                                </tr>
+                            )
+                            )}
+                        </td>
+                    </tr>
+                </ReactBootStrap.Table>
 
-
-                    ))}
-                </div>
             </>
-
-
         )
     }
 }
